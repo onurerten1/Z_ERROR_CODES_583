@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SKTD" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <KTD_OBJECT>
+    <NAME>ZERRORCODE583</NAME>
+    <TYPE>GENERAL_TEXT</TYPE>
+    <SOURCE_CONTENT_TYPE>02</SOURCE_CONTENT_TYPE>
+    <REF_OBJ_TYPE>SMBC</REF_OBJ_TYPE>
+    <REF_OBJ_NAME>ZERRORCODE583</REF_OBJ_NAME>
+    <ABAP_LANGUAGE_VERSION>X</ABAP_LANGUAGE_VERSION>
+    <CONTENT>
+     <item>
+      <NAME>ZERRORCODE583</NAME>
+      <LANGU>E</LANGU>
+      <COMPONENT_UUID>is2ENzrPHt6UrUWSn7mbRQ==</COMPONENT_UUID>
+      <SOURCE_CONTENT>VGhpcyBpcyBhIGxpc3Qgb2YgZXJyb3IgY29kZXMuIFRoZSBmaXJzdCBkaWdpdCBvZiB0aGUgZXJy
+b3IgY29kZSBkZWZpbmVzIHRoZSBjbGFzcyBvZiB0aGUgZXJyb3I6CiogNHh4OiBjbGllbnQgZXJy
+b3I=</SOURCE_CONTENT>
+     </item>
+    </CONTENT>
+   </KTD_OBJECT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

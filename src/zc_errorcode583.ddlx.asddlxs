@@ -1,0 +1,50 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'ErrorCode583', 
+    typeNamePlural: 'ErrorCode583s', 
+    title: {
+      type: #STANDARD, 
+      label: 'Error Code 583', 
+      value: 'ErrorCode'
+    }
+  }
+}
+annotate view ZC_ErrorCode583 with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_ErrorCode583', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Error Code 583', 
+    position: 1 
+  }, 
+  {
+    id: 'ZI_ErrorCode583Text', 
+    type: #LINEITEM_REFERENCE, 
+    label: 'Error Code 583 Text', 
+    position: 2 , 
+    targetElement: '_ErrorCode583Text'
+  } ]
+  ErrorCode;
+  
+  @UI.identification: [ {
+    position: 3 
+  } ]
+  LastChangedAt;
+  
+  @UI.identification: [ {
+    hidden: true, 
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Description;
+}

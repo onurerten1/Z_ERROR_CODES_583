@@ -1,0 +1,101 @@
+managed with additional save implementation in class ZBP_I_ERRORCODE583_S unique;
+strict;
+with draft;
+
+define behavior for ZI_ErrorCode583_S alias ErrorCode583All
+draft table ZERRCODE_583_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  field ( readonly )
+   SingletonID;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _ErrorCode583 { create ( features : instance ); with draft; }
+}
+
+define behavior for ZI_ErrorCode583 alias ErrorCode583
+persistent table ZERRCODE_583
+draft table ZERRCODE_583_D
+etag master LocalLastChangedAt
+lock dependent by _ErrorCode583All
+authorization dependent by _ErrorCode583All
+
+{
+  field ( mandatory : create )
+   ErrorCode;
+
+  field ( readonly )
+   SingletonID,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   ErrorCode;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZERRCODE_583
+  {
+    ErrorCode = ERROR_CODE;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _ErrorCode583All { with draft; }
+  association _ErrorCode583Text { create ( features : global ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}
+
+define behavior for ZI_ErrorCode583Text alias ErrorCode583Text
+persistent table ZERRCODET_583
+draft table ZERRCODET_583_D
+etag master LocalLastChangedAt
+lock dependent by _ErrorCode583All
+authorization dependent by _ErrorCode583All
+
+{
+  field ( mandatory : create )
+   Langu;
+
+  field ( readonly )
+   SingletonID,
+   ErrorCode,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   Langu;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZERRCODET_583
+  {
+    Langu = LANGU;
+    ErrorCode = ERROR_CODE;
+    Description = DESCRIPTION;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _ErrorCode583All { with draft; }
+  association _ErrorCode583 { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

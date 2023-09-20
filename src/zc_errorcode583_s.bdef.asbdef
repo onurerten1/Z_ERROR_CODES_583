@@ -1,0 +1,40 @@
+projection implementation in class ZBP_C_ERRORCODE583_S unique;
+strict;
+use draft;
+
+define behavior for ZC_ErrorCode583_S alias ErrorCode583All
+
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _ErrorCode583 { create ( augment ); with draft; }
+}
+
+define behavior for ZC_ErrorCode583 alias ErrorCode583
+
+{
+  field ( modify )
+   Description;
+
+
+  use update( augment );
+  use delete;
+
+  use association _ErrorCode583All { with draft; }
+  use association _ErrorCode583Text { create; with draft; }
+}
+
+define behavior for ZC_ErrorCode583Text alias ErrorCode583Text
+
+{
+  use update;
+  use delete;
+
+  use association _ErrorCode583All { with draft; }
+  use association _ErrorCode583 { with draft; }
+}

@@ -1,0 +1,5 @@
+define service ZUI_ERRORCODE583 {
+  expose ZC_ERRORCODE583_S as ErrorCode583All;
+  expose ZC_ERRORCODE583 as ErrorCode583;
+  expose ZC_ERRORCODE583TEXT as ErrorCode583Text;
+}
